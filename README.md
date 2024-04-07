@@ -1,11 +1,11 @@
 # umi-plugin-build-info
 
-A umi plugin
+umi@4 插件，用于在生产环境展示版本构建信息以及对应的版本最后一次 git 提交记录。
 
 ## Install
 
 ```bash
-pnpm i umi-plugin-build-info
+pnpm i umi-plugin-build-info -D
 ```
 
 ## Usage
@@ -14,15 +14,38 @@ Configure in `.umirc.ts`,
 
 ```js
 export default {
-  plugins: [
-    ['umi-plugin-build-info'],
-  ],
+  plugins: [['umi-plugin-build-info']],
 }
+```
+
+在生产环境浏览器控制台中，访问 `buildInfo` 变量即可：
+
+```
+window.buildInfo
+
+<!--
+{
+  buildTime: '2024/4/7 17:06:02', 
+  lastCommit: '[11e031b]: chore(deps): add build-info umi plugin, Sun Apr 7 17:05:45 2024 +0800'
+}
+-->
 ```
 
 ## Options
 
-TODO
+```js
+export default defineConfig({
+  buildInfo: {
+    debug: true,
+    buildInfoKey: 'buildInfo_xxx',
+  },
+})
+```
+
+| 配置项       | 类型    | 默认值    | 说明                             |
+| ------------ | ------- | --------- | -------------------------------- |
+| debug        | boolean | false     | 是否开启调试模式                 |
+| buildInfoKey | string  | buildInfo | 构建信息注入在 window 中的变量值 |
 
 ## LICENSE
 
