@@ -6,12 +6,13 @@
   "types": "dist/cjs/index.d.ts",
   "scripts": {
     "dev": "father dev",
-    "build": "father build"
+    "build": "father build",
+    "prepublishOnly": "father doctor && pnpm run build"
   },
   "keywords": [],
   "authors": {
     "name": "KuangPF <1633397286@qq.com>",
-    "email": "1633397286@qq.com"
+    "email": "me@kuangpf.com"
   },
   "license": "MIT",
   "files": [
