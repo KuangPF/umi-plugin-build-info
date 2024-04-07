@@ -16,7 +16,7 @@ Configure in `.umirc.ts`,
 
 ```js
 export default {
-  plugins: [['umi-plugin-build-info']],
+  plugins: ['umi-plugin-build-info'],
 }
 ```
 
