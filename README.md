@@ -2,6 +2,8 @@
 
 umi@4 插件，用于在生产环境展示版本构建信息以及对应的版本最后一次 git 提交记录。
 
+[![NPM version](https://img.shields.io/npm/v/umi-plugin-build-info.svg?style=flat)](https://npmjs.org/package/umi-plugin-build-info) [![NPM downloads](http://img.shields.io/npm/dm/umi-plugin-build-info.svg?style=flat)](https://npmjs.org/package/umi-plugin-build-info)
+
 ## Install
 
 ```bash
