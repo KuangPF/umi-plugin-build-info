@@ -23,5 +23,9 @@
     "father": "^4.4.0",
     "typescript": "^5.4.4",
     "umi": "^4.1.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
