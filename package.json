@@ -1,7 +1,7 @@
 {
   "name": "umi-plugin-build-info",
   "author": "KuangPF <1633397286@qq.com>",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
   "scripts": {

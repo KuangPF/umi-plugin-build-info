@@ -23,7 +23,7 @@ export default (api: IApi) => {
     // 构建时间
     const buildTime = new Date().toLocaleString()
     // 提取最后一次提交记录的信息
-    const lastCommit = childProcess.execSync('git log --format="[%h]: %s, %cd" -n 1').toString().trim().replace(/'/g, "");
+    const lastCommit = childProcess.execSync('git log --format="[%h]: %s, %cd" -n 1').toString().trim().replace(/['"]/g, "");
 
     const { debug, buildInfoKey } = api.config.buildInfo
 
