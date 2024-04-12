@@ -7,12 +7,14 @@ export default (api: IApi) => {
     config: {
       default: {
         debug: false,
+        injectAlways: false,
         buildInfoKey: 'builInfo',
       },
 
       schema(Joi) {
         return Joi.object({
-          debug: Joi.boolean().required(),
+          debug: Joi.boolean(),
+          injectAlways: Joi.boolean(),
           buildInfoKey: Joi.string(),
         })
       },
@@ -24,13 +26,16 @@ export default (api: IApi) => {
     const buildTime = new Date().toLocaleString()
     // 提取最后一次提交记录的信息
     const lastCommit = childProcess.execSync('git log --format="[%h]: %s, %cd" -n 1').toString().trim().replace(/['"]/g, "");
+    // 最新 tag
+    const tag = childProcess.execSync('git tag --sort=-version:refname | head -n 1').toString().trim().replace(/['"]/g, "");
 
-    const { debug, buildInfoKey } = api.config.buildInfo
+    const { debug, buildInfoKey, injectAlways } = api.config.buildInfo
 
-    if (api.env === 'production') {
+    if (api.env === 'production' || injectAlways) {
       if (debug) {
-        api.logger.info(`buildTime：${buildTime}`)
-        api.logger.info(`lastCommit：${lastCommit}`)
+        api.logger.info(`buildTime: ${buildTime}`)
+        api.logger.info(`lastCommit: ${lastCommit}`)
+        api.logger.info(`tag: ${tag}`)
       }
 
       return `
@@ -39,6 +44,7 @@ export default (api: IApi) => {
       const builInfo = Object.create(null);
       builInfo.buildTime = '${buildTime}';
       builInfo.lastCommit = '${lastCommit}';
+      builInfo.tag = '${tag}';
 
       window.${buildInfoKey} = builInfo
       `

@@ -47,6 +47,7 @@ export default defineConfig({
 | 配置项       | 类型    | 默认值    | 说明                             |
 | ------------ | ------- | --------- | -------------------------------- |
 | debug        | boolean | false     | 是否开启调试模式                 |
+| injectAlways | boolean | false     | 是否总是注入变量，默认 `production` 环境才会注入 |
 | buildInfoKey | string  | buildInfo | 构建信息注入在 window 中的变量值 |
 
 ## LICENSE
