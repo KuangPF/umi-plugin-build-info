@@ -8,7 +8,7 @@ export default (api: IApi) => {
       default: {
         debug: false,
         injectAlways: false,
-        buildInfoKey: 'builInfo',
+        buildInfoKey: 'buildInfo',
       },
 
       schema(Joi) {
