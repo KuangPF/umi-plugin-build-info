@@ -28,7 +28,8 @@ window.buildInfo
 <!--
 {
   buildTime: '2024/4/7 17:06:02', 
-  lastCommit: '[11e031b]: chore(deps): add build-info umi plugin, Sun Apr 7 17:05:45 2024 +0800'
+  lastCommit: '[11e031b]: chore(deps): add build-info umi plugin, Sun Apr 7 17:05:45 2024 +0800',
+  tag: 0.0.1
 }
 -->
 ```
@@ -39,6 +40,7 @@ window.buildInfo
 export default defineConfig({
   buildInfo: {
     debug: true,
+    injectAlways: false,
     buildInfoKey: 'buildInfo_xxx',
   },
 })
