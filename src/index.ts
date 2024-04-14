@@ -21,7 +21,7 @@ export default (api: IApi) => {
     },
   })
 
-  api.addHTMLScripts(() => {
+  api.addHTMLHeadScripts(() => {
     // 构建时间
     const buildTime = new Date().toLocaleString()
     // 提取最后一次提交记录的信息
@@ -41,12 +41,12 @@ export default (api: IApi) => {
       return `
       /* ## THIS CONTENT WAS INJECTED BY UMI BUILD_INFO PLUGIN ## */
 
-      const builInfo = Object.create(null);
-      builInfo.buildTime = '${buildTime}';
-      builInfo.lastCommit = '${lastCommit}';
-      builInfo.tag = '${tag}';
+      const buildInfo = Object.create(null);
+      buildInfo.buildTime = '${buildTime}';
+      buildInfo.lastCommit = '${lastCommit}';
+      buildInfo.tag = '${tag}';
 
-      window.${buildInfoKey} = builInfo
+      window.${buildInfoKey} = buildInfo
       `
     }
 
