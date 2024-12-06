@@ -28,6 +28,8 @@ export default (api: IApi) => {
     const lastCommit = childProcess.execSync('git log --format="[%h]: %s, %cd" -n 1').toString().trim().replace(/['"]/g, "");
     // 最新 tag
     const tag = childProcess.execSync('git tag --sort=-version:refname | head -n 1').toString().trim().replace(/['"]/g, "");
+    // commit hash
+    const commitHash = childProcess.execSync('git rev-parse HEAD').toString().trim().replace(/['"]/g, "");
 
     const { debug, buildInfoKey, injectAlways } = api.config.buildInfo
 
@@ -44,6 +46,7 @@ export default (api: IApi) => {
       const buildInfo = Object.create(null);
       buildInfo.buildTime = '${buildTime}';
       buildInfo.lastCommit = '${lastCommit}';
+      buildInfo.commitHash = '${commitHash}';
       buildInfo.tag = '${tag}';
 
       window.${buildInfoKey} = buildInfo
